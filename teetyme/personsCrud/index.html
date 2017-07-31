@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery-3.2.1.min.js"></script>
+    <script>
+        $( document ).ready(function() { 
+            personsRequest("displayList");
+        });
+        
+        // Submit a request to the persons table.
+        function personsRequest(action, id) {
+            $.post(
+                "index.php",
+                "table="   + "tt_persons"          +
+                "&action=" + action             +
+                "&id="     + id                 +
+                "&name="   + $("#name").val()   +
+                "&email="  + $("#email").val()  +
+                "&mobile=" + $("#mobile").val()
+            ).done(function( msg ) { 
+                $("#content").html( msg );
+            });
+        }
+    </script>
+    <style>
+        .btn {
+            width: 75px;
+        }
+    </style>
+</head>
+<body>
+    <div id="content"></div>
+</body>
+</html>
