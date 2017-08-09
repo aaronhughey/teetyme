@@ -30,6 +30,7 @@
                         </div>
                         <div class='row'>
                             <a class='btn btn-primary' onclick='personsRequest(\"displayCreate\")'>Add Course</a>
+							<a class='btn btn-success' href='../index.html'>Home</a>
                             <table class='table table-striped table-bordered' style='background-color: lightgrey !important'>
                                 <thead>
                                     <tr>
@@ -62,7 +63,7 @@
                 <div class='container'>
                     <div class='span10 offset1'>
                         <div class='row'>
-                            <h3>Create Persons</h3>
+                            <h3>Create Course</h3>
                         </div>
                         <div class='form-horizontal'>
                             <div class='control-group'>
@@ -75,14 +76,14 @@
                             <div class='control-group'>
                                 <label class='control-label". ((empty($this->phoneErr))?'':' error') ."'>phone</label>
                                 <div class='controls'>
-                                    <input id='phone' type='text' placeholder='name@svsu.edu' required>
+                                    <input id='phone' type='text' placeholder='555-555-5555' required>
                                     <span class='help-inline'>{$this->phoneErr}</span>
                                 </div>
                             </div>
                             <div class='control-group'>
                                 <label class='control-label". ((empty($this->addressErr))?'':' error') ."'>address</label>
                                 <div class='controls'>
-                                    <input id='address' type='text' placeholder='555-5555-555' required>
+                                    <input id='address' type='text'  required>
                                     <span class='help-inline'>{$this->addressErr}</span>
                                 </div>
                             </div>
@@ -99,7 +100,7 @@
         public function createRecord() {
             if ($this->validate()) {
                 Database::prepare(
-                    "INSERT INTO persons (name, phone, address) VALUES (?,?,?)",
+                    "INSERT INTO tt_courses (name, phone, address) VALUES (?,?,?)",
                     array($this->name, $this->phone, $this->address)
                 );
                 $this->displayListScreen();
@@ -118,7 +119,7 @@
                 <div class='container'>
                     <div class='span10 offset1'>
                         <div class='row'>
-                            <h3>Person Details</h3>
+                            <h3>Course Details</h3>
                         </div>
                         <div class='form-horizontal'>
                             <div class='control-group'>
@@ -163,7 +164,7 @@
                 <div class='container'>
                     <div class='span10 offset1'>
                         <div class='row'>
-                            <h3>Update Person</h3>
+                            <h3>Update Course</h3>
                         </div>
                         <div class='form-horizontal'>
                             <div class='control-group'>
@@ -200,7 +201,7 @@
         public function updateRecord() {
             if ($this->validate()) {
                 Database::prepare(
-                    "UPDATE persons SET name = ?, phone = ?, address = ? WHERE id = ?",
+                    "UPDATE tt_courses SET name = ?, phone = ?, address = ? WHERE id = ?",
                     array($this->name, $this->phone, $this->address, $this->id)
                 );
                 $this->displayListScreen();
@@ -243,11 +244,6 @@
             // Validate Phone
             if (!preg_match("/^[0-9]{3}-[0-9]{3}-[0-9]{4}$/", $this->phone)) {
                 $this->phoneErr = "Please enter a valid phone number.";
-                $valid = false;
-            }
-            // Validate Address
-            if (!filter_var($this->address, FILTER_VALIDATE_EMAIL)) {
-                $this->addressErr = "Please enter a valid address.";
                 $valid = false;
             }
             // Check for empty input.

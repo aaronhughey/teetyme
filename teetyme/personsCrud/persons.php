@@ -30,6 +30,7 @@
                         </div>
                         <div class='row'>
                             <a class='btn btn-primary' onclick='personsRequest(\"displayCreate\")'>Add Person</a>
+							<a class='btn btn-success' href='../index.html'>Home</a>
                             <table class='table table-striped table-bordered' style='background-color: lightgrey !important'>
                                 <thead>
                                     <tr>

@@ -1,0 +1,28 @@
+<html>
+<head>
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+  <script>
+    $(document).ready( function() {
+		$.get("json.php", function(data) {
+			var parsed = JSON.parse(data);
+			for(var i = 0; i < parsed.length; i++) {
+				$("body").append("<tr><td>" + parsed[i].name +
+					"</td><td>" + parsed[i].phone +
+					"</td><td>" + parsed[i].address + 
+					"</td></tr>");
+			}
+		});
+	});
+
+  </script>
+</head>
+<body>
+<table id="body">
+  <tr>
+	<th>Name</th>
+	<th>Phone</th>
+	<th>Address</th>
+  </tr>
+  </table>
+</body>
+</html>

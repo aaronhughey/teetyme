@@ -1,6 +1,12 @@
+<?php
+session_start();
+if (empty($_SESSION['name'])) header("Location: login.php"); // redirect
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<br />
+<a class="btn btn-success" href="login.php">Login</a>
     <meta charset="utf-8">
     <link href="css/bootstrap.min.css" rel="stylesheet">
 	<h1>Tee Tyme!</h1>
@@ -11,6 +17,12 @@
 	<a class="btn btn-info" href="roundsCrud/">Rounds</a>
 	<br />
 	<br />
-	<a class="btn btn-success" href="teetymeUML.png">Diagram</a>
+	<a class="btn btn-success" href="webService.html">JSON</a>
+	<br />
+	<br />
+	<a class="btn btn-success" href="fileUpload.php">Upload</a>
+	<br />
+	<br />
+	<a class="btn btn-success" href="diagrams.html">Diagrams</a>
 </body>
 </html>
